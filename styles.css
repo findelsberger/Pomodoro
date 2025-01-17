@@ -120,3 +120,96 @@ h1 {
   pointer-events: none;
   font-weight: bold;
 }
+
+.focus-task {
+  margin: 1rem 0;
+  padding: 0.8rem;
+  background-color: #f0f7eb;
+  border-radius: 8px;
+  color: #4b4b4b;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.focus-task:empty {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  color: #4b4b4b;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.modal input:focus {
+  outline: none;
+  border-color: #1cb0f6;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+#cancel-focus {
+  background-color: #e5e5e5;
+  color: #4b4b4b;
+}
+
+#confirm-focus {
+  background-color: #58cc02;
+  color: white;
+}
+
+#confirm-focus:hover {
+  background-color: #46a302;
+}
+
+.hidden {
+  display: none !important;
+}

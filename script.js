@@ -8,6 +8,7 @@ const startButton = document.getElementById("start");
 const resetButton = document.getElementById("reset");
 const modeText = document.getElementById("mode-text");
 const toggleButton = document.getElementById("toggle-mode");
+const focusDisplay = document.getElementById("focus-display");
 
 const WORK_TIME = 30 * 60; // 25 minutes in seconds
 const BREAK_TIME = 5 * 60; // 5 minutes in seconds
@@ -34,6 +35,9 @@ function switchMode() {
   timeLeft = isWorkTime ? WORK_TIME : BREAK_TIME;
   modeText.textContent = isWorkTime ? "Work Time" : "Break Time";
   toggleButton.textContent = isWorkTime ? "Switch to Break" : "Switch to Work";
+  if (!isWorkTime) {
+    focusDisplay.textContent = ""; // Clear the focus task during break
+  }
   updateDisplay();
 }
 
@@ -42,6 +46,16 @@ function startTimer() {
 
   if (!timeLeft) {
     timeLeft = WORK_TIME;
+  }
+
+  // Add focus task prompt at the start of work sessions
+  if (isWorkTime && !focusDisplay.textContent) {
+    const focusTask = prompt(
+      "What would you like to focus on during this session?"
+    );
+    if (focusTask) {
+      focusDisplay.textContent = `Current Focus: ${focusTask}`;
+    }
   }
 
   timerId = setInterval(() => {
@@ -72,6 +86,7 @@ function resetTimer() {
   startButton.textContent = "Start";
   toggleButton.textContent = "Switch to Break";
   document.title = "Pomodoro Timer";
+  focusDisplay.textContent = ""; // Clear the focus task
   updateDisplay();
 }
 
